@@ -1,0 +1,139 @@
+
+<!doctype html>
+<html>
+<head>
+    {% load static %}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery flowchart.js Example</title>
+<link href="{% static 'css/jquery.flowchart.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<style>
+body { background-color:#fafafa;}
+.container { margin:150px auto;}
+.demo {
+  height: 300px;
+  margin-bottom: 10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>jQuery flowchart.js Example</h1>
+<div class="demo" id="example"></div>
+
+<button class="btn btn-primary" id="create_operator">Create A New Operator</button>
+<button class="btn btn-danger" id="delete_selected_button">Delete Selected Operator</button>
+
+</div>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.12.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src= "{% static 'js/jquery.flowchart.js' %}"></script>
+
+
+<!--<link href="{% static 'css/jquery.flowchart.css' %}" rel="stylesheet">
+   <script src= "{% static 'js/jquery-3.3.1.js' %}"></script>
+    <script src= "{% static 'js/jquery-ui.min.js' %}"></script>
+  script src= "{% static 'js/jquery.flowchart.js' %}"></script>
+
+  -->
+    
+   
+<script type="text/javascript">
+  $(document).ready(function() {
+    var data = {
+      operators: {
+        operator1: {
+          top: 20,
+          left: 20,
+          properties: {
+            title: 'Operator 1',
+            inputs: {},
+            outputs: {
+              output_1: {
+                label: 'Output 1',
+              }
+            }
+          }
+        },
+        operator2: {
+          top: 80,
+          left: 300,
+          properties: {
+            title: 'Operator 2',
+            inputs: {
+              input_1: {
+                label: 'Input 1',
+              },
+              input_2: {
+                label: 'Input 2',
+              },
+            },
+            outputs: {}
+          }
+        },
+      }
+    };
+
+    // Apply the plugin on a standard, empty div...
+    $('#example').flowchart({
+      data: data,
+      // allows multiple links on the same output line34
+      multipleLinksOnInput: true,
+      // allows multiple links on the same input line
+      multipleLinksOnOutput: true
+      
+    });
+  });
+  var operatorI = 0;
+    $('#create_operator').click(function() {
+      var operatorId = 'created_operator_' + operatorI;
+      var operatorData = {
+        top: 60,
+        left: 500,
+        properties: {
+          title: 'Operator ' + (operatorI + 3),
+          inputs: {
+            input_1: {
+              label: 'Input 1',
+            }
+          },
+          outputs: {
+            output_1: {
+              label: 'Output 1',
+            }
+          }
+        }
+      };
+
+      operatorI++;
+
+      $('#example').flowchart('createOperator', operatorId, operatorData);
+    });
+
+    $('#delete_selected_button').click(function() {
+      $('#example').flowchart('deleteSelected');
+    });
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>
