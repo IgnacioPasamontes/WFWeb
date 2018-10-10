@@ -7,4 +7,5 @@ urlpatterns = [
     #path('download', views.download, name='download'),
     #path('connection', views.testConnection, name='connection'),
     path('', views.index, name='index'),
+    path('login', views.login, name='login'),
 ]
