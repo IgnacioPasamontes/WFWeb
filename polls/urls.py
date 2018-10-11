@@ -8,4 +8,6 @@ urlpatterns = [
     #path('connection', views.testConnection, name='connection'),
     path('', views.index, name='index'),
     path('login', views.login, name='login'),
+    path('example', views.example, name='example'),
+    path('example2', views.example2, name='example2'),
 ]

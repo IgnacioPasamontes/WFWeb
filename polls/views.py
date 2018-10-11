@@ -37,3 +37,35 @@ def login(request):
   
     template = loader.get_template('login.html')
     return HttpResponse(template.render(context, request))
+
+@csrf_exempt
+def example(request):
+
+    context = {
+        'organs': [1,2],
+        'observations': [1,2],
+        'species' : [1,2],
+        'sex' : [1,2],
+        'routes': [1,2],
+        'num_studies' : 1,
+        'num_structures' : 2
+    }
+  
+    template = loader.get_template('example.html')
+    return HttpResponse(template.render(context, request))
+
+@csrf_exempt
+def example2(request):
+
+    context = {
+        'organs': [1,2],
+        'observations': [1,2],
+        'species' : [1,2],
+        'sex' : [1,2],
+        'routes': [1,2],
+        'num_studies' : 1,
+        'num_structures' : 2
+    }
+  
+    template = loader.get_template('example2.html')
+    return HttpResponse(template.render(context, request))
